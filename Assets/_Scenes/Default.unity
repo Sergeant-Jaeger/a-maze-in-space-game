@@ -1601,7 +1601,7 @@ MonoBehaviour:
   - {fileID: 1553962577}
   - {fileID: 1766869158}
   - {fileID: 360795584}
-  flagPrefab: {fileID: 1660035539358178, guid: 1d6b4acac867a8744a8f33a0771e39ad, type: 2}
+  flagPrefab: {fileID: 1283723972638138, guid: 7c017fe789c13ce4fbfebbb308df86c6, type: 2}
 --- !u!4 &648794004
 Transform:
   m_ObjectHideFlags: 0
