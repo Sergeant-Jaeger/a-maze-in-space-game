@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlagCapture : MonoBehaviour {
-
-    void OnTriggerEnter(Collider other) {
+public class FlagController : MonoBehaviour {
+	void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            Application.Quit();
+			Destroy(transform.gameObject);
             if (UnityEditor.EditorApplication.isPlaying == true) {
                 Debug.Log("Player Wins!!!");
             }
