@@ -19,19 +19,19 @@ public class PlayerController : MonoBehaviour {
     private void FixedUpdate() {
 		if (Input.GetKey("w"))
 		{
-			playerRB.AddForce(cameraTransform.forward * speed);
+			playerRB.AddForce(new Vector3(cameraTransform.forward.x, 0f, cameraTransform.forward.z) * speed);
 		}
 		if (Input.GetKey("a"))
 		{
-			playerRB.AddForce(-cameraTransform.right * speed);
+			playerRB.AddForce(-new Vector3(cameraTransform.right.x, 0f, cameraTransform.right.z) * speed);
 		}
 		if (Input.GetKey("d"))
 		{
-			playerRB.AddForce(cameraTransform.right * speed);
+			playerRB.AddForce(new Vector3(cameraTransform.right.x, 0f, cameraTransform.right.z) * speed);
 		}
 		if (Input.GetKey("s"))
 		{
-			playerRB.AddForce(-cameraTransform.forward * speed);
+			playerRB.AddForce(new Vector3(-cameraTransform.forward.x, 0f, -cameraTransform.forward.z) * speed);
 		}
 	}
 
