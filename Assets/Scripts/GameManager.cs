@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     int playerLives = 2;
 
     [SerializeField]
-    float endDelay = 3f;
+    float endDelay = 0f;
 
     [SerializeField]
     GameObject playerPrefab;
@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour {
         //TODO: Jack needs to fix his hacky ass shit in bb8
         player.transform.GetChild(0).position = spawnPoint.position;
         player.transform.GetChild(0).rotation = spawnPoint.rotation;
+        Rigidbody playerRB = player.GetComponentInChildren<Rigidbody>();
+        playerRB.velocity = Vector3.zero;
+        playerRB.angularVelocity = Vector3.zero;
         //END Jacks hacky shit
     }
 
