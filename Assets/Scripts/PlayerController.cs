@@ -7,9 +7,6 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	float speed;
 
-    [SerializeField]
-    List<Transform> spawnLocations;
-
 	[SerializeField]
 	Transform cameraTransform;
 

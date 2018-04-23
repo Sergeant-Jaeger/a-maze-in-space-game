@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLives: 2
-  endDelay: 3
+  endDelay: 0
   playerPrefab: {fileID: 1987289552302612, guid: 7cf9e70c9ea40fe459850bee469b9eab,
     type: 2}
 --- !u!1001 &656990129
