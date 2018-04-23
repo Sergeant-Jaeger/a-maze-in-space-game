@@ -5,10 +5,9 @@ using UnityEngine;
 public class FlagController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-			Destroy(transform.gameObject);
-            if (UnityEditor.EditorApplication.isPlaying == true) {
-                Debug.Log("Player Wins!!!");
-            }
+            GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
+            FlagManager flagManager = gameManager.GetComponent("FlagManager") as FlagManager;
+            flagManager.captureFlag(gameObject);
         }
     }
 }

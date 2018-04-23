@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,38 +11,37 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     GameObject playerPrefab;
 
-    [SerializeField]
-    List<Transform> spawnLocations;
-
+    private GameObject[] spawnLocations;
     private bool gameOver;
     private WaitForSeconds endWait;
 
     void Start () {
+        spawnLocations = GameObject.FindGameObjectsWithTag("PlayerSpawn");
         gameOver = false;
         endWait = new WaitForSeconds(endDelay);
 
         SpawnPlayer();
-        SetCameraTarget();
 
         StartCoroutine(GameLoop());
 	}
 
     private void SpawnPlayer() {
-        if(spawnLocations.Count > 0) {
+        if(spawnLocations.Length > 0) {
             Transform spawnPoint = GetRandomSpawnPoint();
-            Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+
+            //TODO: Jack needs to fix his hacky ass shit in bb8
+            GameObject player = Instantiate(playerPrefab);
+            player.transform.GetChild(0).position = spawnPoint.position;
+            player.transform.GetChild(0).rotation = spawnPoint.rotation;
+            //END Jacks hacky shit
         } else {
             Debug.LogError("No Spawn Points set");
         }
         
     }
 
-    private void SetCameraTarget() {
-        //TODO: Dynamically set camera to player
-    }
-
     private Transform GetRandomSpawnPoint() {
-        int randomLocation = UnityEngine.Random.Range(0, spawnLocations.Count);
+        int randomLocation = Random.Range(0, spawnLocations.Length);
         return spawnLocations[randomLocation].transform;
     }
 
@@ -53,6 +51,7 @@ public class GameManager : MonoBehaviour {
         yield return StartCoroutine(GameEnding());
 
         if(gameOver) {
+            //TODO: Add game over screen
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -60,22 +59,20 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator GamePlaying() {
-        while(!ZeroFlagsRemaining() || !ZeroLivesRemaining()) {
+        while(FlagsRemaining()) {
             yield return null;
         }
     }
 
     private IEnumerator GameEnding() {
+        if(!FlagsRemaining()) {
+            gameOver = true;
+        }
         yield return endWait;
     }
 
-    private bool ZeroLivesRemaining() {
-        //TODO: figure out how many lives remain
-        return false;
-    }
-
-    private bool ZeroFlagsRemaining() {
-        //TODO: figure out if there are flags left
-        return false;
+    private bool FlagsRemaining() {
+        FlagManager flagManager = gameObject.GetComponent(typeof(FlagManager)) as FlagManager;
+        return flagManager.flagsRemaining() > 0;
     }
 }

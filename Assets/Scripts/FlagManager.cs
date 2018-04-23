@@ -3,40 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlagManager : MonoBehaviour {
-	[SerializeField]
-	private int flagQuantity;
-	[SerializeField]
-	private GameObject[] spawnLocations;
+
 	[SerializeField]
 	private GameObject flagPrefab;
 
-	private GameObject[] flags;
-	private int[] spawnOccupied;
+    private GameObject[] spawnLocations;
+    private List<GameObject> flags;
 
 	private void Start () {
-		if (flagQuantity > spawnLocations.Length)
-		{
-			print("Flag Quantity exceeds number of spawn points");
-			flagQuantity = spawnLocations.Length;
-		}
-		for (int i = 0; i < flagQuantity; i++)
-		{
-			SpawnFlag();
-		}
+        spawnLocations = GameObject.FindGameObjectsWithTag("FlagSpawn");
+        flags = new List<GameObject>();
+        foreach(GameObject spawnLocation in spawnLocations) {
+            flags.Add(SpawnFlag(spawnLocation));
+        }
 	}
 	
-	private void SpawnFlag()
+	private GameObject SpawnFlag(GameObject spawnLocation)
 	{
-		while (true)
-		{
-			int spawn = Random.Range(0, spawnLocations.Length);
-			if (spawnLocations[spawn].transform.childCount > 1) { }
-			else
-			{
-				Instantiate(flagPrefab, spawnLocations[spawn].transform);
-				break;
-			}
-
-		}
+	    return Instantiate(flagPrefab, spawnLocation.transform);
 	}
+
+    public int flagsRemaining() {
+        return flags.Count;
+    }
+
+    public void captureFlag(GameObject flag) {
+        flags.Remove(flag);
+        Destroy(flag);
+    }
 }
