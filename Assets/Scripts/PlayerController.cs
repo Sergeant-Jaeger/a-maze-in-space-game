@@ -38,8 +38,4 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-    public void KillPlayer() {
-        playerRB.velocity = Vector3.zero;
-        playerRB.angularVelocity = Vector3.zero;
-    }
 }

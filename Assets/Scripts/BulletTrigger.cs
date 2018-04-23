@@ -6,8 +6,8 @@ public class BulletTrigger : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Player") {
-            PlayerController controller = collision.gameObject.GetComponent("PlayerController") as PlayerController;
-            controller.KillPlayer();
+            PlayerLife playerLife = collision.gameObject.GetComponent("PlayerLife") as PlayerLife;
+            playerLife.KillPlayer();
             Destroy(gameObject);
         } else {
             Destroy(gameObject);

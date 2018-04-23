@@ -11,7 +11,7 @@ public class DeathZoneTrigger : MonoBehaviour {
     }
 
     void playerRespawn(GameObject player) {
-        PlayerController controller = player.GetComponent("PlayerController") as PlayerController;
-        controller.KillPlayer();
+        PlayerLife playerLife = player.GetComponent("PlayerLife") as PlayerLife;
+        playerLife.KillPlayer();
     }
 }

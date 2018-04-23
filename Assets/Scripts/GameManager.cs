@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     [SerializeField]
+    int playerLives = 2;
+
+    [SerializeField]
     float endDelay = 3f;
 
     [SerializeField]
     GameObject playerPrefab;
 
+    private GameObject player;
     private GameObject[] spawnLocations;
     private bool gameOver;
     private WaitForSeconds endWait;
@@ -25,15 +29,23 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(GameLoop());
 	}
 
+    public void KillPlayer() {
+        playerLives--;
+        RespawnPlayer();
+    }
+
+    public void RespawnPlayer() {
+        Transform spawnPoint = GetRandomSpawnPoint();
+        //TODO: Jack needs to fix his hacky ass shit in bb8
+        player.transform.GetChild(0).position = spawnPoint.position;
+        player.transform.GetChild(0).rotation = spawnPoint.rotation;
+        //END Jacks hacky shit
+    }
+
     private void SpawnPlayer() {
         if(spawnLocations.Length > 0) {
-            Transform spawnPoint = GetRandomSpawnPoint();
-
-            //TODO: Jack needs to fix his hacky ass shit in bb8
-            GameObject player = Instantiate(playerPrefab);
-            player.transform.GetChild(0).position = spawnPoint.position;
-            player.transform.GetChild(0).rotation = spawnPoint.rotation;
-            //END Jacks hacky shit
+            player = Instantiate(playerPrefab);
+            RespawnPlayer();
         } else {
             Debug.LogError("No Spawn Points set");
         }
@@ -52,6 +64,7 @@ public class GameManager : MonoBehaviour {
 
         if(gameOver) {
             //TODO: Add game over screen
+            Debug.Log("Game Over");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -59,16 +72,20 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator GamePlaying() {
-        while(FlagsRemaining()) {
+        while(FlagsRemaining() && LivesRemaining()) {
             yield return null;
         }
     }
 
     private IEnumerator GameEnding() {
-        if(!FlagsRemaining()) {
+        if(!FlagsRemaining() || !LivesRemaining()) {
             gameOver = true;
         }
         yield return endWait;
+    }
+
+    private bool LivesRemaining() {
+        return playerLives > 0;
     }
 
     private bool FlagsRemaining() {
