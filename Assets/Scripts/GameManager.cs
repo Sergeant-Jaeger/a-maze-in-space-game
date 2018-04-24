@@ -97,6 +97,6 @@ public class GameManager : MonoBehaviour {
 
     private bool FlagsRemaining() {
         FlagManager flagManager = gameObject.GetComponent<FlagManager>();
-        return flagManager.flagsRemaining() > 0;
+        return flagManager.FlagsRemaining() > 0;
     }
 }

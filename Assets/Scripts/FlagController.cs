@@ -7,7 +7,7 @@ public class FlagController : MonoBehaviour {
         if (other.gameObject.tag == "Player") {
             GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
             FlagManager flagManager = gameManager.GetComponent<FlagManager>();
-            flagManager.captureFlag(gameObject);
+            flagManager.CaptureFlag(gameObject);
         }
     }
 }

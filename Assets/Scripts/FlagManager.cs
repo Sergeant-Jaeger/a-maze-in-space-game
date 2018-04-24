@@ -18,16 +18,15 @@ public class FlagManager : MonoBehaviour {
         }
 	}
 	
-	private GameObject SpawnFlag(GameObject spawnLocation)
-	{
+	private GameObject SpawnFlag(GameObject spawnLocation) {
 	    return Instantiate(flagPrefab, spawnLocation.transform);
 	}
 
-    public int flagsRemaining() {
+    public int FlagsRemaining() {
         return flags.Count;
     }
 
-    public void captureFlag(GameObject flag) {
+    public void CaptureFlag(GameObject flag) {
         flags.Remove(flag);
         Destroy(flag);
     }
