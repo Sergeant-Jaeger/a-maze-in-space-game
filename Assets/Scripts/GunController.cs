@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunController : MonoBehaviour {
+public class GunController : MonoBehaviour
+{
 
     [SerializeField]
     private GameObject bulletPrefab;
@@ -22,11 +23,13 @@ public class GunController : MonoBehaviour {
     [SerializeField]
     private float bulletLife = 5.0f;
 
-	private void Start() {
+    private void Start()
+    {
         InvokeRepeating("Fire", startFiring, firingFrequency);
     }
 
-    private void Fire() {
+    private void Fire()
+    {
         var bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * bulletSpeed;
 
