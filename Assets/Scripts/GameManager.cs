@@ -6,22 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     [SerializeField]
-    int playerLives = 2;
+    private int playerLives = 2;
 
     [SerializeField]
-    float endDelay = 0f;
+    private float endDelay = 0f;
 
     [SerializeField]
-    GameObject playerPrefab;
+    private GameObject playerPrefab;
 
     private GameObject player;
     private GameObject[] spawnLocations;
-    private bool gameOver;
+    private string gameResult;
     private WaitForSeconds endWait;
 
     void Start () {
         spawnLocations = GameObject.FindGameObjectsWithTag("PlayerSpawn");
-        gameOver = false;
         endWait = new WaitForSeconds(endDelay);
 
         SpawnPlayer();
@@ -65,13 +64,14 @@ public class GameManager : MonoBehaviour {
         yield return StartCoroutine(GamePlaying());
         yield return StartCoroutine(GameEnding());
 
-        if(gameOver) {
+        if(gameResult != null) {
             //TODO: Add game over screen
-            Debug.Log("Game Over");
+            Debug.Log(gameResult);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        StartCoroutine(GameLoop());
+        //Might not need, will test
+        //StartCoroutine(GameLoop());
     }
 
     private IEnumerator GamePlaying() {
@@ -81,9 +81,13 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator GameEnding() {
-        if(!FlagsRemaining() || !LivesRemaining()) {
-            gameOver = true;
+        if(!FlagsRemaining()) {
+            gameResult = "You Won!!!";
         }
+        else if(!LivesRemaining()) {
+            gameResult = "You Suck!!!";
+        }
+
         yield return endWait;
     }
 
@@ -92,7 +96,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private bool FlagsRemaining() {
-        FlagManager flagManager = gameObject.GetComponent(typeof(FlagManager)) as FlagManager;
+        FlagManager flagManager = gameObject.GetComponent<FlagManager>();
         return flagManager.flagsRemaining() > 0;
     }
 }

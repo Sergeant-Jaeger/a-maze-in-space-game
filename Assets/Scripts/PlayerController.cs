@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	[SerializeField]
-	float speed;
+	private float speed;
 
 	[SerializeField]
-	Transform cameraTransform;
+	private Transform cameraTransform;
 
 	private Rigidbody playerRB;
 
