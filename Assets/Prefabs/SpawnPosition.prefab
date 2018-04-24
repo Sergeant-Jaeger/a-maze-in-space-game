@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114727548936863544}
   m_Layer: 0
   m_Name: SpawnPosition
-  m_TagString: Untagged
+  m_TagString: PlayerSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,5 +80,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15b6bcba2ae8944c8358806026c419f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   color: {r: 1, g: 0, b: 0, a: 0.39215687}

@@ -5,28 +5,28 @@ using UnityEngine;
 public class GunController : MonoBehaviour {
 
     [SerializeField]
-    GameObject bulletPrefab;
+    private GameObject bulletPrefab;
 
     [SerializeField]
-    Transform bulletSpawn;
+    private Transform bulletSpawn;
 
     [SerializeField]
-    int bulletSpeed = 5;
+    private int bulletSpeed = 5;
 
     [SerializeField]
-    float startFiring = 1.0f;
+    private float startFiring = 1.0f;
 
     [SerializeField]
-    float firingFrequency = 1.0f;
+    private float firingFrequency = 1.0f;
 
     [SerializeField]
-    float bulletLife = 5.0f;
+    private float bulletLife = 5.0f;
 
 	void Start () {
         InvokeRepeating("Fire", startFiring, firingFrequency);
     }
 
-    void Fire () {
+    private void Fire () {
         var bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.up * bulletSpeed;
 

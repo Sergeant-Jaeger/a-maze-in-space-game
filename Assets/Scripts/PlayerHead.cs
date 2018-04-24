@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHead : MonoBehaviour {
+
 	[SerializeField]
 	private Transform mainBody;
+
 	[SerializeField]
 	private Transform cameraTransform;
 

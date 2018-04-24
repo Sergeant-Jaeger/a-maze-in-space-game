@@ -5,13 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	[SerializeField]
-	float speed;
-
-    [SerializeField]
-    List<Transform> spawnLocations;
+	private float speed;
 
 	[SerializeField]
-	Transform cameraTransform;
+	private Transform cameraTransform;
 
 	private Rigidbody playerRB;
 
@@ -38,19 +35,4 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-    private void spawn() {
-        if (spawnLocations.Count > 0) {
-            int randomLocation = Random.Range(0, spawnLocations.Count);
-            transform.position = spawnLocations[randomLocation].transform.position;
-        } else {
-            Debug.LogError("No Respawn Zones have been placed");
-        }
-        
-    }
-
-    public void KillPlayer() {
-        spawn();
-        playerRB.velocity = Vector3.zero;
-        playerRB.angularVelocity = Vector3.zero;
-    }
 }

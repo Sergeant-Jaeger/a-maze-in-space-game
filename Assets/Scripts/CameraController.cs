@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
 	[SerializeField]
-    GameObject player;
+    private GameObject player;
 
     private Vector3 offset;
 
