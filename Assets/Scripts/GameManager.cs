@@ -19,15 +19,6 @@ public class GameManager : MonoBehaviour {
     private string gameResult;
     private WaitForSeconds endWait;
 
-    void Start () {
-        spawnLocations = GameObject.FindGameObjectsWithTag("PlayerSpawn");
-        endWait = new WaitForSeconds(endDelay);
-
-        SpawnPlayer();
-
-        StartCoroutine(GameLoop());
-	}
-
     public void KillPlayer() {
         playerLives--;
         RespawnPlayer();
@@ -35,23 +26,31 @@ public class GameManager : MonoBehaviour {
 
     public void RespawnPlayer() {
         Transform spawnPoint = GetRandomSpawnPoint();
-        //TODO: Jack needs to fix his hacky ass shit in bb8
+
+        // TODO: Jack needs to fix his hacky ass shit in bb8
         player.transform.GetChild(0).position = spawnPoint.position;
         player.transform.GetChild(0).rotation = spawnPoint.rotation;
         Rigidbody playerRB = player.GetComponentInChildren<Rigidbody>();
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
-        //END Jacks hacky shit
+    }
+
+    private void Start() {
+        spawnLocations = GameObject.FindGameObjectsWithTag("PlayerSpawn");
+        endWait = new WaitForSeconds(endDelay);
+
+        SpawnPlayer();
+
+        StartCoroutine(GameLoop());
     }
 
     private void SpawnPlayer() {
-        if(spawnLocations.Length > 0) {
+        if (spawnLocations.Length > 0) {
             player = Instantiate(playerPrefab);
             RespawnPlayer();
         } else {
             Debug.LogError("No Spawn Points set");
         }
-        
     }
 
     private Transform GetRandomSpawnPoint() {
@@ -60,31 +59,31 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator GameLoop() {
-        //yield return StartCoroutine(GameStarting());
+        ////yield return StartCoroutine(GameStarting());
         yield return StartCoroutine(GamePlaying());
         yield return StartCoroutine(GameEnding());
 
-        if(gameResult != null) {
-            //TODO: Add game over screen
+        if (gameResult != null) {
+            // TODO: Add game over screen
             Debug.Log(gameResult);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        //Might not need, will test
-        //StartCoroutine(GameLoop());
+        // Might not need, will test
+        ////StartCoroutine(GameLoop());
     }
 
     private IEnumerator GamePlaying() {
-        while(FlagsRemaining() && LivesRemaining()) {
+        while (FlagsRemaining() && LivesRemaining()) {
             yield return null;
         }
     }
 
     private IEnumerator GameEnding() {
-        if(!FlagsRemaining()) {
+        if (!FlagsRemaining()) {
             gameResult = "You Won!!!";
         }
-        else if(!LivesRemaining()) {
+        else if (!LivesRemaining()) {
             gameResult = "You Suck!!!";
         }
 

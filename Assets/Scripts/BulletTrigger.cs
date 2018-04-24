@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletTrigger : MonoBehaviour {
 
-    void OnCollisionEnter(Collision collision) {
+    private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Player") {
             GameManager gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
             gameManager.KillPlayer();
@@ -13,5 +13,4 @@ public class BulletTrigger : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
 }

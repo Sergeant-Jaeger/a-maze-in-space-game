@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
  
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class MouseOrbit : MonoBehaviour
@@ -26,14 +26,25 @@ public class MouseOrbit : MonoBehaviour
 	private float x = 0.0f;
 	private float y = 0.0f;
 
-	// Use this for initialization
-	void Start() {
+    public static float ClampAngle(float angle, float min, float max) {
+        if (angle < -360F) {
+            angle += 360F;
+        }
+
+        if (angle > 360F) {
+            angle -= 360F;
+        }
+
+        return Mathf.Clamp(angle, min, max);
+    }
+
+    private void Start() {
 		Vector3 angles = transform.eulerAngles;
 		x = angles.y;
 		y = angles.x;
 	}
 
-	void LateUpdate() {
+	private void LateUpdate() {
 		if (target)
 		{
 			if (Input.GetMouseButton(0))
@@ -47,18 +58,10 @@ public class MouseOrbit : MonoBehaviour
 			Quaternion rotation = Quaternion.Euler(y, x, 0);
 
 			Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-			Vector3 position = rotation * negDistance + target.position;
+			Vector3 position = (rotation * negDistance) + target.position;
 
 			transform.rotation = rotation;
 			transform.position = position;
 		}
-	}
-
-	public static float ClampAngle(float angle, float min, float max) {
-		if (angle < -360F)
-			angle += 360F;
-		if (angle > 360F)
-			angle -= 360F;
-		return Mathf.Clamp(angle, min, max);
 	}
 }

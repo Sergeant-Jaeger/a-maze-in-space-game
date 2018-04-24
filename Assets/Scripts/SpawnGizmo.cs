@@ -9,7 +9,8 @@ public class SpawnGizmo : MonoBehaviour {
 
 	private void OnDrawGizmos() {
 		Gizmos.color = color;
-		//Change to DrawMesh later for customized spawn point gizmos
+
+		// Change to DrawMesh later for customized spawn point gizmos
 		Gizmos.DrawSphere(transform.position, 0.6f);
 	}
 }
