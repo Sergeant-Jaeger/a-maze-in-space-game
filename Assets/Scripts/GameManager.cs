@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         {
             // TODO: Add game over screen
             Debug.Log(gameResult);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
 
         // Might not need, will test
