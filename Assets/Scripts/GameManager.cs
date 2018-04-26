@@ -26,6 +26,19 @@ public class GameManager : MonoBehaviour
         InProgress, Completed, Died
     }
 
+    public int PlayerLives
+    {
+        get
+        {
+            return playerLives;
+        }
+
+        set
+        {
+            playerLives = value;
+        }
+    }
+
     public void KillPlayer()
     {
         playerLives--;
