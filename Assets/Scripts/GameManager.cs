@@ -119,4 +119,9 @@ public class GameManager : MonoBehaviour
     {
         return flagManager.FlagsRemaining() > 0;
     }
+
+    public int GetLives()
+    {
+        return playerLives;
+    }
 }
