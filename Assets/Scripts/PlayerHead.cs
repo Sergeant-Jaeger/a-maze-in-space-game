@@ -5,11 +5,24 @@ using UnityEngine;
 public class PlayerHead : MonoBehaviour
 {
 
-    [SerializeField]
     private Transform mainBody;
-
-    [SerializeField]
     private Transform cameraTransform;
+
+    public Transform MainBody
+    {
+        set
+        {
+            mainBody = value;
+        }
+    }
+
+    public Transform CameraTransform
+    {
+        set
+        {
+            cameraTransform = value;
+        }
+    }
 
     private void Update()
     {
