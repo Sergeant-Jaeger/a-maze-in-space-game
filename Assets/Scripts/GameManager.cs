@@ -17,9 +17,14 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
     private GameObject[] spawnLocations;
-    private string gameResult;
+    private GameResult gameResult;
     private WaitForSeconds endWait;
     private FlagManager flagManager;
+
+    private enum GameResult
+    {
+        InProgress, Completed, Died
+    }
 
     public int PlayerLives
     {
@@ -53,6 +58,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        gameResult = GameResult.InProgress;
         spawnLocations = GameObject.FindGameObjectsWithTag("PlayerSpawn");
         endWait = new WaitForSeconds(endDelay);
 
@@ -85,19 +91,21 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameLoop()
     {
-        ////yield return StartCoroutine(GameStarting());
         yield return StartCoroutine(GamePlaying());
         yield return StartCoroutine(GameEnding());
 
-        if (gameResult != null)
+        if (gameResult != GameResult.InProgress)
         {
-            // TODO: Add game over screen
-            Debug.Log(gameResult);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if (gameResult == GameResult.Completed)
+            {
+                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                SceneManager.LoadScene(nextSceneIndex);
+            }
+            else if (gameResult == GameResult.Died)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
-
-        // Might not need, will test
-        ////StartCoroutine(GameLoop());
     }
 
     private IEnumerator GamePlaying()
@@ -112,11 +120,11 @@ public class GameManager : MonoBehaviour
     {
         if (!FlagsRemaining())
         {
-            gameResult = "You Won!!!";
+            gameResult = GameResult.Completed;
         }
         else if (!LivesRemaining())
         {
-            gameResult = "You Suck!!!";
+            gameResult = GameResult.Died;
         }
 
         yield return endWait;

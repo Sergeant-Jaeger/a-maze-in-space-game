@@ -434,6 +434,10 @@ Prefab:
       propertyPath: m_Name
       value: SpawnFlag (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1996984502589366, guid: ba286e63aba7220449589e48c8e40a23, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba286e63aba7220449589e48c8e40a23, type: 2}
   m_IsPrefabParent: 0
@@ -831,6 +835,10 @@ Prefab:
     - target: {fileID: 1996984502589366, guid: ba286e63aba7220449589e48c8e40a23, type: 2}
       propertyPath: m_Name
       value: SpawnFlag (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996984502589366, guid: ba286e63aba7220449589e48c8e40a23, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba286e63aba7220449589e48c8e40a23, type: 2}
