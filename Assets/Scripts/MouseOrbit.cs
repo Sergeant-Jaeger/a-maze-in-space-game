@@ -5,8 +5,7 @@ using UnityEngine;
 public class MouseOrbit : MonoBehaviour
 {
 
-    [SerializeField]
-    private Transform target;
+    public Transform target;
 
     [SerializeField]
     private float distance = 5.0f;

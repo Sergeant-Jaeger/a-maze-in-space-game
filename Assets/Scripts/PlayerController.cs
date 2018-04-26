@@ -9,35 +9,51 @@ public class PlayerController : MonoBehaviour
     private float speed;
 
     [SerializeField]
-    private Transform cameraTransform;
+    private GameObject cameraObject;
+    private GameObject cameraPlayer;
+
+    [SerializeField]
+    private GameObject headObject;
+    private GameObject headPlayer;
 
     private Rigidbody playerRB;
 
     private void Start()
     {
+        headPlayer = Instantiate(headObject);
+        cameraPlayer = Instantiate(cameraObject);
         playerRB = GetComponent<Rigidbody>();
+        headPlayer.GetComponent<PlayerHead>().mainBody = transform;
+        headPlayer.GetComponent<PlayerHead>().cameraTransform = cameraPlayer.transform;
+        cameraPlayer.GetComponent<MouseOrbit>().target = transform;
     }
 
     private void FixedUpdate()
     {
         if (Input.GetKey("w"))
         {
-            playerRB.AddForce(new Vector3(cameraTransform.forward.x, 0f, cameraTransform.forward.z) * speed);
+            playerRB.AddForce(new Vector3(cameraPlayer.transform.forward.x, 0f, cameraPlayer.transform.forward.z) * speed);
         }
 
         if (Input.GetKey("a"))
         {
-            playerRB.AddForce(-new Vector3(cameraTransform.right.x, 0f, cameraTransform.right.z) * speed);
+            playerRB.AddForce(-new Vector3(cameraPlayer.transform.right.x, 0f, cameraPlayer.transform.right.z) * speed);
         }
 
         if (Input.GetKey("d"))
         {
-            playerRB.AddForce(new Vector3(cameraTransform.right.x, 0f, cameraTransform.right.z) * speed);
+            playerRB.AddForce(new Vector3(cameraPlayer.transform.right.x, 0f, cameraPlayer.transform.right.z) * speed);
         }
 
         if (Input.GetKey("s"))
         {
-            playerRB.AddForce(new Vector3(-cameraTransform.forward.x, 0f, -cameraTransform.forward.z) * speed);
+            playerRB.AddForce(new Vector3(-cameraPlayer.transform.forward.x, 0f, -cameraPlayer.transform.forward.z) * speed);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(headPlayer);
+        Destroy(cameraPlayer);
     }
 }
