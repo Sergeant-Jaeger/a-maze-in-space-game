@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GamePlaying()
     {
-        yield return new WaitForSeconds(3.0f);
         while (FlagsRemaining() && LivesRemaining())
         {
             yield return null;
