@@ -21,6 +21,19 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds endWait;
     private FlagManager flagManager;
 
+    public int PlayerLives
+    {
+        get
+        {
+            return playerLives;
+        }
+
+        set
+        {
+            playerLives = value;
+        }
+    }
+
     public void KillPlayer()
     {
         playerLives--;
@@ -118,10 +131,5 @@ public class GameManager : MonoBehaviour
     private bool FlagsRemaining()
     {
         return flagManager.FlagsRemaining() > 0;
-    }
-
-    public int GetLives()
-    {
-        return playerLives;
     }
 }
