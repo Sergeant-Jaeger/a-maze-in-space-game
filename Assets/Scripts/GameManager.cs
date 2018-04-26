@@ -83,8 +83,15 @@ public class GameManager : MonoBehaviour
 
         if (gameResult != GameResult.InProgress)
         {
-            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            SceneManager.LoadScene(nextSceneIndex);
+            if (gameResult == GameResult.Completed)
+            {
+                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                SceneManager.LoadScene(nextSceneIndex);
+            }
+            else if (gameResult == GameResult.Died)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
