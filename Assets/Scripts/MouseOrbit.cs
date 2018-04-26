@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseOrbit : MonoBehaviour
 {
 
-    public Transform target;
+    private Transform target;
 
     [SerializeField]
     private float distance = 5.0f;
@@ -24,6 +24,14 @@ public class MouseOrbit : MonoBehaviour
 
     private float x = 0.0f;
     private float y = 0.0f;
+
+    public Transform Target
+    {
+        set
+        {
+            target = value;
+        }
+    }
 
     public static float ClampAngle(float angle, float min, float max)
     {

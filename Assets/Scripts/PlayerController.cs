@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
         headPlayer = Instantiate(headObject);
         cameraPlayer = Instantiate(cameraObject);
         playerRB = GetComponent<Rigidbody>();
-        headPlayer.GetComponent<PlayerHead>().mainBody = transform;
-        headPlayer.GetComponent<PlayerHead>().cameraTransform = cameraPlayer.transform;
-        cameraPlayer.GetComponent<MouseOrbit>().target = transform;
+        headPlayer.GetComponent<PlayerHead>().MainBody = transform;
+        headPlayer.GetComponent<PlayerHead>().CameraTransform = cameraPlayer.transform;
+        cameraPlayer.GetComponent<MouseOrbit>().Target = transform;
     }
 
     private void FixedUpdate()
