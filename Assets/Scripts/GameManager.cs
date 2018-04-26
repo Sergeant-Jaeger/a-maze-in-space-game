@@ -17,10 +17,14 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
     private GameObject[] spawnLocations;
-    enum GameResult { InProgress, Completed, Died }
     private GameResult gameResult;
     private WaitForSeconds endWait;
     private FlagManager flagManager;
+
+    private enum GameResult
+    {
+        InProgress, Completed, Died
+    }
 
     public void KillPlayer()
     {
@@ -83,7 +87,6 @@ public class GameManager : MonoBehaviour
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
             SceneManager.LoadScene(nextSceneIndex);
         }
-
     }
 
     private IEnumerator GamePlaying()
