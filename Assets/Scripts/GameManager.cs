@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] spawnLocations;
     private string gameResult;
     private WaitForSeconds endWait;
+    private FlagManager flagManager;
 
     public void KillPlayer()
     {
@@ -44,6 +45,9 @@ public class GameManager : MonoBehaviour
         endWait = new WaitForSeconds(endDelay);
 
         SpawnPlayer();
+
+        flagManager = gameObject.GetComponent<FlagManager>();
+        flagManager.SpawnFlags();
 
         StartCoroutine(GameLoop());
     }
@@ -86,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GamePlaying()
     {
+        yield return new WaitForSeconds(3.0f);
         while (FlagsRemaining() && LivesRemaining())
         {
             yield return null;
@@ -113,7 +118,6 @@ public class GameManager : MonoBehaviour
 
     private bool FlagsRemaining()
     {
-        FlagManager flagManager = gameObject.GetComponent<FlagManager>();
         return flagManager.FlagsRemaining() > 0;
     }
 }
