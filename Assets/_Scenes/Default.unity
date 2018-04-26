@@ -1438,6 +1438,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70eb00b0d2660435e95e7cf6069166bc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &601178611 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1175416402929744, guid: 70eb00b0d2660435e95e7cf6069166bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 601178610}
+--- !u!114 &601178612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601178611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dbf5edbf7bf774b910482a3c192ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &612461686
 Prefab:
   m_ObjectHideFlags: 0
@@ -2419,7 +2435,7 @@ GameObject:
   - component: {fileID: 1246192376}
   - component: {fileID: 1246192375}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LifeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2475,7 +2491,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1246192376
 CanvasRenderer:
   m_ObjectHideFlags: 0
