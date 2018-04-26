@@ -1425,13 +1425,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeText: {fileID: 2071405446}
-  gameManager: {fileID: 601178613}
---- !u!114 &601178613 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114903495876508430, guid: 70eb00b0d2660435e95e7cf6069166bc,
-    type: 2}
-  m_PrefabInternal: {fileID: 601178610}
-  m_Script: {fileID: 11500000, guid: 0d08563f60b652247bd11234b1643661, type: 3}
 --- !u!1001 &612461686
 Prefab:
   m_ObjectHideFlags: 0

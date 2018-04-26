@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LifeManager : MonoBehaviour
+public class HUDManager : MonoBehaviour
 {
 
     [SerializeField]
     private Text lifeText;
-
-    [SerializeField]
-    private GameManager gameManager;
 
     private void Start()
     {
@@ -24,6 +21,6 @@ public class LifeManager : MonoBehaviour
 
     private void UpdateLives()
     {
-        lifeText.text = "Lives Remaining: " + gameManager.PlayerLives;
+        lifeText.text = "Lives Remaining: " + GetComponent<GameManager>().PlayerLives;
     }
 }
