@@ -9,7 +9,7 @@ public class FlagManager : MonoBehaviour
     private GameObject flagPrefab;
 
     private GameObject[] spawnLocations;
-    private List<GameObject> flags = new List<GameObject>();
+    private List<GameObject> flags;
 
     public int FlagsRemaining()
     {
@@ -22,8 +22,9 @@ public class FlagManager : MonoBehaviour
         Destroy(flag);
     }
 
-    private void Start()
+    public void SpawnFlags()
     {
+        flags = new List<GameObject>();
         spawnLocations = GameObject.FindGameObjectsWithTag("FlagSpawn");
         foreach (GameObject spawnLocation in spawnLocations)
         {
