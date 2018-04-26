@@ -5,7 +5,6 @@ using UnityEngine;
 public class MouseOrbit : MonoBehaviour
 {
 
-    [SerializeField]
     private Transform target;
 
     [SerializeField]
@@ -25,6 +24,14 @@ public class MouseOrbit : MonoBehaviour
 
     private float x = 0.0f;
     private float y = 0.0f;
+
+    public Transform Target
+    {
+        set
+        {
+            target = value;
+        }
+    }
 
     public static float ClampAngle(float angle, float min, float max)
     {

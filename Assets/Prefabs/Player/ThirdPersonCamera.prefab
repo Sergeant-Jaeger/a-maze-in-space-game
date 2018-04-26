@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dffbdc864820634418f6f7368e83bbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4803010019377278, guid: 7cf9e70c9ea40fe459850bee469b9eab, type: 2}
+  target: {fileID: 0}
   distance: 5
   xSpeed: 120
   ySpeed: 120

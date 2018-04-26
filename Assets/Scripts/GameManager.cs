@@ -36,9 +36,8 @@ public class GameManager : MonoBehaviour
     {
         Transform spawnPoint = GetRandomSpawnPoint();
 
-        // TODO: Jack needs to fix his hacky ass shit in bb8
-        player.transform.GetChild(0).position = spawnPoint.position;
-        player.transform.GetChild(0).rotation = spawnPoint.rotation;
+        player.transform.position = spawnPoint.position;
+        player.transform.rotation = spawnPoint.rotation;
         Rigidbody playerRB = player.GetComponentInChildren<Rigidbody>();
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
