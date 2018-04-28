@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
             else if (gameResult == GameResult.Died)
             {
                 //SceneManager.LoadScene(0);
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene("GameLost");
             }
         }
     }
