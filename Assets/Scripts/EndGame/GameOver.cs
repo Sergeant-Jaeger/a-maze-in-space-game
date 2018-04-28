@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameWon : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
 
     public void BackToMainMenu()
