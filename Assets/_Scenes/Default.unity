@@ -1405,6 +1405,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1175416402929744, guid: 70eb00b0d2660435e95e7cf6069166bc, type: 2}
+      propertyPath: m_TagString
+      value: GameManager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70eb00b0d2660435e95e7cf6069166bc, type: 2}
   m_IsPrefabParent: 0

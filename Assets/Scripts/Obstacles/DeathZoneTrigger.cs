@@ -9,7 +9,7 @@ public class DeathZoneTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GameManager gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            GameManager gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             gameManager.KillPlayer();
         }
     }
