@@ -1,3 +1,3 @@
-# Top Down Capture the Flag
+# A Maze in Space
 
 ## Made by Scrub Club
